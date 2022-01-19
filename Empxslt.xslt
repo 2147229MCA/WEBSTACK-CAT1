@@ -13,37 +13,38 @@
       <th style="text-align:left">EMAIL</th>
       <th style="text-align:left">MobNum</th>
       <th style="text-align:left">Designation</th>
-<th style="text-align:left">Promotion</th>
+      <th style="text-align:left">Promotion</th>
     </tr>
-    <xsl:for-each select="catalog/cd">
+    <xsl:for-each select="Company/Employee">
     <tr>
-      <td><xsl:value-of select="ID"/></td>
-      <td><xsl:value-of select="NAME"/></td>
-<td><xsl:value-of select="AGE"/></td>
-<td><xsl:value-of select="SALARY"/></td>
-<td><xsl:value-of select="EMAIL"/></td>
-<td><xsl:value-of select="MobNum"/></td>
-<td><xsl:value-of select="Designation"/></td>
-<td><xsl:value-of select="Promotion"/></td>
+<td><xsl:value-of select="@id"/></td>
+      <td><xsl:value-of select="Emp-name"/></td>
+      <td><xsl:value-of select="Emp-age"/></td>
+<td><xsl:value-of select="Emp-salary"/></td>
+<td><xsl:value-of select="Emp-emailid"/></td>
+
+<td><xsl:value-of select="Emp-Phonenum"/></td>
+<td><xsl:value-of select="Emp-designation"/></td>
+<td>
+		<xsl:if test="Emp-age &gt;= 50">
+		<xsl:text>Associate Project Manager </xsl:text>
+		</xsl:if>
+		<xsl:if test="Emp-age &gt;= 40">
+		<xsl:if test="Emp-age &lt;= 49">
+		<xsl:text>Team Leader</xsl:text>
+		</xsl:if>
+		</xsl:if>
+		<xsl:if test="Emp-age &lt;= 40">
+		<xsl:text>Developer</xsl:text>
+		</xsl:if>
+		</td>
     </tr>
     </xsl:for-each>
-<xsl:for-each select="catalog/cd">
-    <xsl:if test="AGE>=50" >
-      <tr>
-        <td><xsl:value-of select="ID"/></td>
-        <td><xsl:value-of select="NAME"/></td>
-        <td><xsl:value-of select="AGE"/></td>
-        <td><xsl:value-of select="SALARY"/></td>
-        <td><xsl:value-of select="EMAIL"/></td>
-        <td><xsl:value-of select="MobNum"/></td>
-        <td><xsl:value-of select="Designation"/></td>
-        <td><xsl:value-of select="Promotion"/></td>
-         
-      </tr>
-    </xsl:if>
-    </xsl:for-each>
+
+
 
   </table>
 </body>
 </html>
 </xsl:template>
+</xsl:stylesheet>
